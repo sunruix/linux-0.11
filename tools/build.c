@@ -69,6 +69,8 @@ int main(int argc, char ** argv)
 				perror(argv[4]);
 				die("Couldn't stat root device.");
 			}
+#define MAJOR(a) (((unsigned)(a))>>8)
+#define MINOR(a) ((a)&0xff)
 			major_root = MAJOR(sb.st_rdev);
 			minor_root = MINOR(sb.st_rdev);
 		} else {
@@ -91,17 +93,17 @@ int main(int argc, char ** argv)
 		die("Unable to open 'boot'");
 	if (read(id,buf,MINIX_HEADER) != MINIX_HEADER)
 		die("Unable to read header of 'boot'");
-	if (((long *) buf)[0]!=0x04100301)
+	if (((unsigned *) buf)[0]!=0x04100301)
 		die("Non-Minix header of 'boot'");
-	if (((long *) buf)[1]!=MINIX_HEADER)
+	if (((unsigned *) buf)[1]!=MINIX_HEADER)
 		die("Non-Minix header of 'boot'");
-	if (((long *) buf)[3]!=0)
+	if (((unsigned *) buf)[3]!=0)
 		die("Illegal data segment in 'boot'");
-	if (((long *) buf)[4]!=0)
+	if (((unsigned *) buf)[4]!=0)
 		die("Illegal bss in 'boot'");
-	if (((long *) buf)[5] != 0)
+	if (((unsigned *) buf)[5] != 0)
 		die("Non-Minix header of 'boot'");
-	if (((long *) buf)[7] != 0)
+	if (((unsigned *) buf)[7] != 0)
 		die("Illegal symbol table in 'boot'");
 	i=read(id,buf,sizeof buf);
 	fprintf(stderr,"Boot sector %d bytes.\n",i);
@@ -120,17 +122,17 @@ int main(int argc, char ** argv)
 		die("Unable to open 'setup'");
 	if (read(id,buf,MINIX_HEADER) != MINIX_HEADER)
 		die("Unable to read header of 'setup'");
-	if (((long *) buf)[0]!=0x04100301)
+	if (((unsigned *) buf)[0]!=0x04100301)
 		die("Non-Minix header of 'setup'");
-	if (((long *) buf)[1]!=MINIX_HEADER)
+	if (((unsigned *) buf)[1]!=MINIX_HEADER)
 		die("Non-Minix header of 'setup'");
-	if (((long *) buf)[3]!=0)
+	if (((unsigned *) buf)[3]!=0)
 		die("Illegal data segment in 'setup'");
-	if (((long *) buf)[4]!=0)
+	if (((unsigned *) buf)[4]!=0)
 		die("Illegal bss in 'setup'");
-	if (((long *) buf)[5] != 0)
+	if (((unsigned *) buf)[5] != 0)
 		die("Non-Minix header of 'setup'");
-	if (((long *) buf)[7] != 0)
+	if (((unsigned *) buf)[7] != 0)
 		die("Illegal symbol table in 'setup'");
 	for (i=0 ; (c=read(id,buf,sizeof buf))>0 ; i+=c )
 		if (write(1,buf,c)!=c)

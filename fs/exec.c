@@ -184,8 +184,11 @@ static unsigned long copy_strings(int argc,char ** argv,unsigned long *page,
                 // 存页，并将该页面指针填入指针数组，同时也使页面指针pag 指向该
                 // 新页面，若申请不到空闲页面则返回0.
 				if (!(pag = (char *) page[p/PAGE_SIZE]) &&
+                        /*
 				    !(pag = (char *) page[p/PAGE_SIZE] =
-				      (unsigned long *) get_free_page())) 
+                        (unsigned long *) get_free_page()))
+                        */
+                    !(pag = (char *)(page[p/PAGE_SIZE] = get_free_page())))
 					return 0;
                 // 如果字符串在内核空间，则设置fs段寄存器指向内核数据段(ds)。
 				if (from_kmem==2)

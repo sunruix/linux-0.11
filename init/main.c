@@ -69,7 +69,8 @@ static inline _syscall0(int,sync)
 // 用于内核显示信息的缓存
 static char printbuf[1024];
 
-extern int vsprintf();
+//extern int vsprintf();
+int vsprintf(char *, const char *, va_list);
 extern void init(void);
 extern void blk_dev_init(void);
 extern void chr_dev_init(void);

@@ -25,14 +25,14 @@ extern int sys_setuid();
 extern int sys_getuid();
 extern int sys_stime();
 extern int sys_ptrace();
-extern int sys_alarm();
+extern int sys_alarm(long);
 extern int sys_fstat();
 extern int sys_pause();
 extern int sys_utime();
 extern int sys_stty();
 extern int sys_gtty();
 extern int sys_access();
-extern int sys_nice();
+extern int sys_nice(long);
 extern int sys_ftime();
 extern int sys_sync();
 extern int sys_kill();
@@ -75,9 +75,9 @@ fn_ptr sys_call_table[] = { sys_setup, sys_exit, sys_fork, sys_read,
 sys_write, sys_open, sys_close, sys_waitpid, sys_creat, sys_link,
 sys_unlink, sys_execve, sys_chdir, sys_time, sys_mknod, sys_chmod,
 sys_chown, sys_break, sys_stat, sys_lseek, sys_getpid, sys_mount,
-sys_umount, sys_setuid, sys_getuid, sys_stime, sys_ptrace, sys_alarm,
+sys_umount, sys_setuid, sys_getuid, sys_stime, sys_ptrace, (fn_ptr)sys_alarm,
 sys_fstat, sys_pause, sys_utime, sys_stty, sys_gtty, sys_access,
-sys_nice, sys_ftime, sys_sync, sys_kill, sys_rename, sys_mkdir,
+(fn_ptr)sys_nice, sys_ftime, sys_sync, sys_kill, sys_rename, sys_mkdir,
 sys_rmdir, sys_dup, sys_pipe, sys_times, sys_prof, sys_brk, sys_setgid,
 sys_getgid, sys_signal, sys_geteuid, sys_getegid, sys_acct, sys_phys,
 sys_lock, sys_ioctl, sys_fcntl, sys_mpx, sys_setpgid, sys_ulimit,

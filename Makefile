@@ -10,8 +10,8 @@ LD86	=ld86 -0
 AS	=as
 LD	=ld
 LDFLAGS	=-m elf_i386 -Ttext 0 -e startup_32
-CC	=gcc -mcpu=i386 $(RAMDISK)
-CFLAGS	=-Wall -O2 -fomit-frame-pointer 
+CC	=gcc -march=i386 -m32 $(RAMDISK)
+CFLAGS	=-Wall -O2 -fomit-frame-pointer -fno-stack-protector
 
 CPP	=cpp -nostdinc -Iinclude
 
@@ -48,11 +48,11 @@ disk: Image
 	dd bs=8192 if=Image of=/dev/fd0
 
 tools/build: tools/build.c
-	$(CC) $(CFLAGS) \
+	gcc $(CFLAGS) \
 	-o tools/build tools/build.c
 
 boot/head.o: boot/head.s
-	gcc -I./include -traditional -c boot/head.s
+	gcc -I./include -traditional -c -m32 boot/head.s
 	mv head.o boot/
 
 tools/system:	boot/head.o init/main.o \
