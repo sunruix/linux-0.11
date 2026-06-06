@@ -105,6 +105,7 @@ __asm__("std ; repne ; scasb\n\t"   // 置方向位，al(0)与对应每个页面
 	"movl $1024,%%ecx\n\t"          // 寄存器ecx置计数值1024
 	"leal 4092(%%edx),%%edi\n\t"    // 将4092+edx的位置->dei（该页面的末端地址）
 	"rep ; stosl\n\t"               // 将edi所指内存清零(反方向，即将该页面清零)
+    "cld\n\t"                               //
 	"movl %%edx,%%eax\n"            // 将页面起始地址->eax（返回值）
 	"1:"
 	:"=a" (__res)

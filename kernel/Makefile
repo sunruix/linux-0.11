@@ -20,7 +20,7 @@ CC	=gcc -march=i386 -m32 	# GNU C语言编译器
 #  以后不再使用；-nostdinc -L../include不使用默认路径中的包含文件，而使用这里指定
 #  目录中的。
 CFLAGS	=-Wall -O -fstrength-reduce -fomit-frame-pointer \
-	-finline-functions -nostdinc -I../include -fno-stack-protector
+	-finline-functions -nostdinc -I../include -fno-stack-protector -no-pie -fno-pic
 # C前处理选项。-E只运行C前处理，对所有指定的C程序进行预处理并将处理结果输出到标准
 # 输出设备或指定的输出文件中.
 CPP	=gcc -E -nostdinc -I../include

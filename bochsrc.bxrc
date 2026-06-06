@@ -1,0 +1,42 @@
+# ###########################################################
+# Bochs 配置文件：BIOS 引导 + 软盘启动 + 调试模式
+# 专门用于开发操作系统引导扇区、loading system
+# ###########################################################
+
+# 1. 内存大小 (16MB 足够)
+megs: 16
+
+# 2. BIOS + VGA BIOS 路径（必须正确！）
+# 如果你是 Linux / macOS / Windows 都通用，Bochs 会自动找
+#romimage: file=$BXSHARE/BIOS-bochs-legacy
+#vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+romimage: file=/usr/share/bochs/BIOS-bochs-legacy
+vgaromimage: file=/usr/share/vgabios/vgabios.bin
+
+# 3. 软盘 A: 你的引导镜像（关键！）
+floppya: 1_44=Image, status=inserted
+
+# 4. 启动顺序：优先从软盘启动
+boot: floppy
+
+# 5. 鼠标（不需要可以关闭）
+mouse: enabled=0
+
+# 6. 键盘映射（默认即可）
+keyboard: type=mf, serial_delay=200
+
+# 7. 屏幕输出
+display_library: x, options="gui_debug"  # Linux
+#display_library: win32, options="gui_debug"                # Windows
+# display_library: sdl2                 # macOS
+
+# 8. 日志（方便排查 RIP=0xfff0 错误）
+log: bochs.log
+
+# 9. 调试器开启（必须！）
+debug: action=ignore
+
+# 10. 最关键：关闭 CPU 加速，避免磁盘读取失败（解决 RIP=0xfff0）
+cpu: count=1, ips=1000000
+clock: sync=none, time0=1
+
