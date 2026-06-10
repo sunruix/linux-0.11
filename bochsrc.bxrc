@@ -26,7 +26,8 @@ mouse: enabled=0
 keyboard: type=mf, serial_delay=200
 
 # 7. 屏幕输出
-display_library: x, options="gui_debug"  # Linux
+#display_library: term
+#display_library: x, options="gui_debug"  # Linux
 #display_library: win32, options="gui_debug"                # Windows
 # display_library: sdl2                 # macOS
 
@@ -40,3 +41,4 @@ debug: action=ignore
 cpu: count=1, ips=1000000
 clock: sync=none, time0=1
 
+gdbstub: enabled=1, port=1234, text_base=0, data_base=0, bss_base=0

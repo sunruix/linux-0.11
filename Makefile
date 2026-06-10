@@ -11,7 +11,7 @@ AS	=as
 LD	=ld
 LDFLAGS	=-m elf_i386 -e startup_32 -T kernel.lds
 CC	=gcc -march=i386 -m32 $(RAMDISK)
-CFLAGS	=-Wall -O2 -fomit-frame-pointer -fno-stack-protector -no-pie -fno-pic
+CFLAGS	=-Wall -g -O2 -fomit-frame-pointer -fno-stack-protector -no-pie -fno-pic
 
 CPP	=cpp -nostdinc -Iinclude
 

@@ -1,0 +1,49 @@
+qemu-system-i386 -m 16 -machine pc -drive file=Image,if=floppy,format=raw -boot a -nographic
+qemu-system-i386 -m 16 -drive file=bootimage-0.11,if=floppy,format=raw -boot a -serial stdio
+qemu-system-i386 -m 16 -drive file=bootimage-0.11,format=raw -drive file=rootimage-0.11,format=raw -boot a -serial stdio
+qemu-system-i386 -m 16 -nographic -fda Image -boot a -S -s
+qemu-system-i386 -m 16 -drive file=Image,format=raw -boot a -vnc:0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=Image,if=floppy,format=raw -boot a -serial stdio
+qemu-system-i386 -m 16 -drive file=Image -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -machine microvm -drive file=Image,if=floppy,format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=bootimage-0.11,if=floppy,format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -nographic -serial stdio -drive file=/dev/zero,format=raw,size=1440k -S -s
+qemu-system-i386 -m 16 -kernel tools/kernel -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=Image,if=floppy,format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=Image,if=floppy,format=raw -drive file=rootimage-0.11,if=floppy,format=raw -boot a -serial stdio
+qemu-system-i386 -m 16 -fda Image -boot a -machine pc-0.10 -cpu 486 -nographic -serial stdio
+qemu-system-i386 -m 16 -drive file=Image,format=raw,index=0,media=disk -boot c -machine pc-0.10 -cpu 486 -serial stdio
+qemu-system-i386 -m 16 -drive file=bootimage-0.11,if=floppy,format=raw -drive file=rootimage-0.11,if=floppy,format=raw -boot a -serial stdio
+qemu-system-i386 -m 16 -kernel toos/system -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -nographic -serial stdio -drive file=Image,format=raw,size=140800 -S -s
+qemu-system-i386 -m 16 -nographic -serial stdio -drive file=/dev/zero,format=raw,size=154596 -S -s
+qemu-system-i386 -m 16 -kernel tools/system -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=Image,format=raw -drive file=rootimage-0.11,format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -fda Image -boot a -machine pc -cpu 486 -nographic -serial stdio
+qemu-system-i386 -m 16 -drive file=bootimage-0.11,format=raw -drive file=rootimage-0.11,format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -fda Image -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -fda Image -format raw -boot a -machine pc -cpu 486 -nographic -serial stdio
+qemu-system-i386 -m 16 -nographic -drive file=/dev/zero,format=raw,size=0 -S -s
+qemu-system-i386 -m 16 -drive file=Image,format=raw -boot a -machine pc-0.10 -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -nographic -serial stdio -drive file=Image,format=raw,size=1440k -S -s
+qemu-system-i386
+qemu-system-i386 -m 16 -drive file=Image,format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive format=raw file=Image -boot a -serial stdio
+qemu-system-i386 -m 16 -drive file=Image -boot a -serial stdio
+qemu-system-i386 -m 16 -drive file=Image if=floppy format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=Image,if=floppy format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -fda Image -boot a -machine pc -cpu 486 -nographic 
+qemu-system-i386 -m 16 -drive file=Image,format=raw,index=0,media=disk -boot c -machine pc -cpu 486 -serial stdio
+qemu-system-i386 -m 16 -kernel Image -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=Image,if=floppy,format=raw -drive file=rootimage-0.11,if=floppy -boot a -serial stdio
+qemu-system-i386 -m 16 -kernel tools/system -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -fda Image -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -fda Image -boot a -cpu 486 -serial stdio -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -fda Image format=raw -boot a -machine pc -cpu 486 -nographic -serial stdio
+qemu-system-i386 -m 16 -nographic -fda Image -boot a -S s
+qemu-system-i386 -m 16 -fda Image -a boot -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -machine pc -drive file=Image,if=floppy,format=raw -boot a -vnc 0.0.0.0:0
+qemu-system-i386 -m 16 -drive file=Image,format=raw -boot a -serial stdio
+qemu-system-i386 -m 16 -drive file=bootimage-0.11,format=raw -boot a -serial stdio
+qemu-system-i386 -m 16 -nographic -serial stdio -drive file=/dev/zero,format=raw,size=0 -S -s
+qemu-system-i386 -m 16 -nographic -fda -boot a Image -S s
